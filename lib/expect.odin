@@ -2,6 +2,7 @@ package lib
 
 import "core:fmt"
 import "core:reflect"
+import "core:strings"
 
 @(private)
 expect :: proc(token_index: ^int, expected_token_type: typeid, actual_token: Token, expected_value: Maybe(string) = nil) -> (err: Err_Parse) {
@@ -15,12 +16,12 @@ expect :: proc(token_index: ^int, expected_token_type: typeid, actual_token: Tok
 	if expected_value != nil {
 		#partial switch t in actual_token {
 			case Token_Identifier:
-				if t.value != expected_value {
+				if strings.compare(t.value, expected_value.?) != 0 {
 					err = ._FailedToParse
 					return
 				}
 			case Token_Constant:
-				if t.value != expected_value {
+				if strings.compare(t.value, expected_value.?) != 0 {
 					err = ._FailedToParse
 					return
 				}

@@ -1,6 +1,5 @@
 package lib
 
-@(private)
 TokenList__destroy :: proc(token_list: TokenList, allocator := context.allocator) {
     for token in token_list {
         #partial switch t in token {

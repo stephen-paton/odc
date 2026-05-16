@@ -43,6 +43,20 @@ main :: proc() {
     if read_err != nil do panic("Failed to read .i file")
 	defer delete(c_source_code)
 
+    token_list, tokenise_err := lib.tokenise(string(c_source_code))
+    if tokenise_err == ._NoCorrespondingToken do panic("Failed to tokenise .i file")
+    defer lib.TokenList__destroy(token_list)
+
+    fmt.println("Token List:")
+    for token in token_list do fmt.printfln("%v", token)
+
+    ast, ast_err := lib.parse(token_list)
+    if ast_err == ._FailedToParse do panic("Failed to parse token_list")
+    defer lib.AST__destroy(ast)
+
+    fmt.println("AST:")
+    fmt.printfln("%v", ast)
+
     // s_file_path := fmt.aprintf("%v.s", c_file_path[0:len(c_file_path) - 2])
     // defer delete(s_file_path)
     
