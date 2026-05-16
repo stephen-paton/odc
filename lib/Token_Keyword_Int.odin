@@ -2,9 +2,9 @@ package lib
 
 import "core:text/regex"
 
-OpenParenToken :: struct {}
+Token_Keyword_Int :: struct {}
 
-OpenParenToken__try_from_str :: proc(value: string) -> (token: OpenParenToken, err: Token__Err__try_from_str) {
+Token_Keyword_Int__try_from_str :: proc(value: string) -> (token: Token_Keyword_Int, err: Token__Err__try_from_str) {
     err = ._Ok
 
     matcher_regex, regex_err := regex.create_by_user(MATCHER_REGEX)
@@ -19,9 +19,9 @@ OpenParenToken__try_from_str :: proc(value: string) -> (token: OpenParenToken, e
     } else {
         err = ._FailedToMatch
     }
-    
+
     return
 }
 
 @(private="file")
-MATCHER_REGEX :: `/^\(/`
+MATCHER_REGEX :: `/^int\b/`

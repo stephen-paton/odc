@@ -2,9 +2,9 @@ package lib
 
 import "core:text/regex"
 
-ReturnKeywordToken :: struct {}
+Token_Paren_Open :: struct {}
 
-ReturnKeywordToken__try_from_str :: proc(value: string) -> (token: ReturnKeywordToken, err: Token__Err__try_from_str) {
+Token_Paren_Open__try_from_str :: proc(value: string) -> (token: Token_Paren_Open, err: Token__Err__try_from_str) {
     err = ._Ok
 
     matcher_regex, regex_err := regex.create_by_user(MATCHER_REGEX)
@@ -24,4 +24,4 @@ ReturnKeywordToken__try_from_str :: proc(value: string) -> (token: ReturnKeyword
 }
 
 @(private="file")
-MATCHER_REGEX :: `/^return\b/`
+MATCHER_REGEX :: `/^\(/`

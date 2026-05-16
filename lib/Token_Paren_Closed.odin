@@ -2,9 +2,9 @@ package lib
 
 import "core:text/regex"
 
-IntKeywordToken :: struct {}
+Token_Paren_Closed :: struct {}
 
-IntKeywordToken__try_from_str :: proc(value: string) -> (token: IntKeywordToken, err: Token__Err__try_from_str) {
+Token_Paren_Closed__try_from_str :: proc(value: string) -> (token: Token_Paren_Closed, err: Token__Err__try_from_str) {
     err = ._Ok
 
     matcher_regex, regex_err := regex.create_by_user(MATCHER_REGEX)
@@ -19,9 +19,9 @@ IntKeywordToken__try_from_str :: proc(value: string) -> (token: IntKeywordToken,
     } else {
         err = ._FailedToMatch
     }
-
+    
     return
 }
 
 @(private="file")
-MATCHER_REGEX :: `/^int\b/`
+MATCHER_REGEX :: `/^\)/`

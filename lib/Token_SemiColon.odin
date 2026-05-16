@@ -2,9 +2,9 @@ package lib
 
 import "core:text/regex"
 
-CloseParenToken :: struct {}
+Token_SemiColon :: struct {}
 
-CloseParenToken__try_from_str :: proc(value: string) -> (token: CloseParenToken, err: Token__Err__try_from_str) {
+Token_SemiColon__try_from_str :: proc(value: string) -> (token: Token_SemiColon, err: Token__Err__try_from_str) {
     err = ._Ok
 
     matcher_regex, regex_err := regex.create_by_user(MATCHER_REGEX)
@@ -24,4 +24,4 @@ CloseParenToken__try_from_str :: proc(value: string) -> (token: CloseParenToken,
 }
 
 @(private="file")
-MATCHER_REGEX :: `/^\)/`
+MATCHER_REGEX :: `/^\;/`

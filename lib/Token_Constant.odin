@@ -3,11 +3,11 @@ package lib
 import "core:strings"
 import "core:text/regex"
 
-IdentifierToken :: struct {
+Token_Constant :: struct {
     value: string,
 }
 
-IdentifierToken__try_from_str :: proc(value: string, allocator := context.allocator, loc := #caller_location) -> (token: IdentifierToken, err: Token__Err__try_from_str) {
+Token_Constant__try_from_str :: proc(value: string, allocator := context.allocator, loc := #caller_location) -> (token: Token_Constant, err: Token__Err__try_from_str) {
     err = ._Ok
 
     matcher_regex, regex_err := regex.create_by_user(MATCHER_REGEX,)
@@ -29,4 +29,4 @@ IdentifierToken__try_from_str :: proc(value: string, allocator := context.alloca
 }
 
 @(private="file")
-MATCHER_REGEX :: `/^[a-zA-Z_]\w*\b/`
+MATCHER_REGEX :: `/^[0-9]+\b/`

@@ -2,9 +2,9 @@ package lib
 
 import "core:text/regex"
 
-VoidKeywordToken :: struct {}
+Token_Curly_Closed :: struct {}
 
-VoidKeywordToken__try_from_str :: proc(value: string) -> (token: VoidKeywordToken, err: Token__Err__try_from_str) {
+Token_Curly_Closed__try_from_str :: proc(value: string) -> (token: Token_Curly_Closed, err: Token__Err__try_from_str) {
     err = ._Ok
 
     matcher_regex, regex_err := regex.create_by_user(MATCHER_REGEX)
@@ -24,4 +24,4 @@ VoidKeywordToken__try_from_str :: proc(value: string) -> (token: VoidKeywordToke
 }
 
 @(private="file")
-MATCHER_REGEX :: `/^void\b/`
+MATCHER_REGEX :: `/^\}/`

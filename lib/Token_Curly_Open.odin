@@ -2,9 +2,9 @@ package lib
 
 import "core:text/regex"
 
-OpenCurlyToken :: struct {}
+Token_Curly_Open :: struct {}
 
-OpenCurlyToken__try_from_str :: proc(value: string) -> (token: OpenCurlyToken, err: Token__Err__try_from_str) {
+Token_Curly_Open__try_from_str :: proc(value: string) -> (token: Token_Curly_Open, err: Token__Err__try_from_str) {
     err = ._Ok
 
     matcher_regex, regex_err := regex.create_by_user(MATCHER_REGEX)

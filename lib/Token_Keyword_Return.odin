@@ -2,9 +2,9 @@ package lib
 
 import "core:text/regex"
 
-CloseCurlyToken :: struct {}
+Token_Keyword_Return :: struct {}
 
-CloseCurlyToken__try_from_str :: proc(value: string) -> (token: CloseCurlyToken, err: Token__Err__try_from_str) {
+Token_Keyword_Return__try_from_str :: proc(value: string) -> (token: Token_Keyword_Return, err: Token__Err__try_from_str) {
     err = ._Ok
 
     matcher_regex, regex_err := regex.create_by_user(MATCHER_REGEX)
@@ -24,4 +24,4 @@ CloseCurlyToken__try_from_str :: proc(value: string) -> (token: CloseCurlyToken,
 }
 
 @(private="file")
-MATCHER_REGEX :: `/^\}/`
+MATCHER_REGEX :: `/^return\b/`

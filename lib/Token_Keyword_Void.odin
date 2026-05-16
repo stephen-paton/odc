@@ -2,9 +2,9 @@ package lib
 
 import "core:text/regex"
 
-SemiColonToken :: struct {}
+Token_Keyword_Void :: struct {}
 
-SemiColonToken__try_from_str :: proc(value: string) -> (token: SemiColonToken, err: Token__Err__try_from_str) {
+Token_Keyword_Void__try_from_str :: proc(value: string) -> (token: Token_Keyword_Void, err: Token__Err__try_from_str) {
     err = ._Ok
 
     matcher_regex, regex_err := regex.create_by_user(MATCHER_REGEX)
@@ -24,4 +24,4 @@ SemiColonToken__try_from_str :: proc(value: string) -> (token: SemiColonToken, e
 }
 
 @(private="file")
-MATCHER_REGEX :: `/^\;/`
+MATCHER_REGEX :: `/^void\b/`
