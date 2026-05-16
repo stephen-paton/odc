@@ -1,13 +1,6 @@
 package lib
 
-import "core:fmt"
-
-tokenise__Err :: enum {
-    _Ok,
-    _NoCorrespondingToken,
-}
-
-tokenise :: proc(c_source_code: string, allocator := context.allocator) -> (token_list: [dynamic]Token, err: tokenise__Err) {
+tokenise :: proc(c_source_code: string, allocator := context.allocator) -> (token_list: TokenList, err: Err_Tokenise) {
     err = ._Ok
 
     skip_count: int
