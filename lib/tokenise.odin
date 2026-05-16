@@ -26,7 +26,7 @@ tokenise :: proc(c_source_code: string, allocator := context.allocator) -> (toke
         sub_str := c_source_code[i:]
 
         token: Token
-        token_err: Token__Err__try_from_str = ._FailedToMatch
+        token_err: Err_TryFrom = ._FailedToConvert
 
         token, token_err = Token_Keyword_Int__try_from_str(sub_str)
         if token_err != ._Ok do token, token_err = Token_Keyword_Void__try_from_str(sub_str)

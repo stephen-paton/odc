@@ -4,7 +4,7 @@ import "core:text/regex"
 
 Token_Curly_Closed :: struct {}
 
-Token_Curly_Closed__try_from_str :: proc(value: string) -> (token: Token_Curly_Closed, err: Token__Err__try_from_str) {
+Token_Curly_Closed__try_from_str :: proc(value: string) -> (token: Token_Curly_Closed, err: Err_TryFrom) {
     err = ._Ok
 
     matcher_regex, regex_err := regex.create_by_user(MATCHER_REGEX)
@@ -17,7 +17,7 @@ Token_Curly_Closed__try_from_str :: proc(value: string) -> (token: Token_Curly_C
     if success {
         token = {}
     } else {
-        err = ._FailedToMatch
+        err = ._FailedToConvert
     }
     
     return

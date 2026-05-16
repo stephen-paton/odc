@@ -7,7 +7,7 @@ Token_Identifier :: struct {
     value: string,
 }
 
-Token_Identifier__try_from_str :: proc(value: string, allocator := context.allocator, loc := #caller_location) -> (token: Token_Identifier, err: Token__Err__try_from_str) {
+Token_Identifier__try_from_str :: proc(value: string, allocator := context.allocator, loc := #caller_location) -> (token: Token_Identifier, err: Err_TryFrom) {
     err = ._Ok
 
     matcher_regex, regex_err := regex.create_by_user(MATCHER_REGEX,)
@@ -22,7 +22,7 @@ Token_Identifier__try_from_str :: proc(value: string, allocator := context.alloc
             value = strings.clone(capture.groups[0], allocator = allocator, loc = loc)
         }
     } else {
-        err = ._FailedToMatch
+        err = ._FailedToConvert
     }
 
     return

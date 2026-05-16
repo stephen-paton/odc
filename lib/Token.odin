@@ -13,11 +13,6 @@ Token :: union {
     Token_SemiColon,
 }
 
-Token__Err__try_from_str :: enum {
-    _Ok,
-    _FailedToMatch,
-}
-
 Token__len :: proc(token: Token) -> (length: int) {
     switch t in token {
         case Token_Identifier: length = len(t.value)

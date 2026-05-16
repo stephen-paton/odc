@@ -1,18 +1,13 @@
 package lib
 
-Option :: enum {
+CLIOption :: enum {
     _Lex,
     _Parse,
     _Codegen,
     _Assembly
 }
 
-Option__Err__try_from_str :: enum {
-    _Ok,
-    _FailedToConvert,
-}
-
-Option__try_from_str :: proc(value: string) -> (option: Option, err: Option__Err__try_from_str) {
+CLIOption__try_from_str :: proc(value: string) -> (option: CLIOption, err: Err_TryFrom) {
     err = ._Ok
 
     switch (value) {

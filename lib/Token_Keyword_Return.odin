@@ -4,7 +4,7 @@ import "core:text/regex"
 
 Token_Keyword_Return :: struct {}
 
-Token_Keyword_Return__try_from_str :: proc(value: string) -> (token: Token_Keyword_Return, err: Token__Err__try_from_str) {
+Token_Keyword_Return__try_from_str :: proc(value: string) -> (token: Token_Keyword_Return, err: Err_TryFrom) {
     err = ._Ok
 
     matcher_regex, regex_err := regex.create_by_user(MATCHER_REGEX)
@@ -17,7 +17,7 @@ Token_Keyword_Return__try_from_str :: proc(value: string) -> (token: Token_Keywo
     if success {
         token = {}
     } else {
-        err = ._FailedToMatch
+        err = ._FailedToConvert
     }
     
     return

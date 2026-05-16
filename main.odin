@@ -12,14 +12,14 @@ main :: proc() {
     args_len := len(args)
 
     c_file_path: string
-    maybe_option: Maybe(lib.Option)
+    maybe_option: Maybe(lib.CLIOption)
 
     if args_len < 2 {
         panic("Too few args provided")
     } else if args_len == 2 {
         c_file_path = args[1]
     } else if args_len == 3 {
-        option, err := lib.Option__try_from_str(args[1])
+        option, err := lib.CLIOption__try_from_str(args[1])
         if err == ._Ok do maybe_option = option
         c_file_path = args[2]
     } else {
